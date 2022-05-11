@@ -65,11 +65,9 @@ def send():
     usr_input = usr_input.lower()
     textcon.insert(END, f'User: {usr_input}'+'\n','usr')
     if usr_input in exit_list:
-        textcon.config(fg='black')
         textcon.insert(END,"Bot:Ok bye! Chat with you later\n")
         return root.destroy()
     else:
-        textcon.config(fg='black')
         if greet_res(usr_input) != None:
             lab=f"Bot: {greet_res(usr_input)}"+'\n'
             textcon.insert(END,lab)
@@ -78,14 +76,14 @@ def send():
             textcon.insert(END, lab)
 
 root=tk.Tk()
-filename="Untitled.txt"
-root.title(f"Chat Bot - Untitled.txt")
+root.title(f"Chat Bot")
 root.geometry('500x400')
 root.resizable(False, False)
 message=tk.StringVar()
 chat_win=Frame(root,width=50,height=8)
 chat_win.place(x=6,y=6,height=300,width=480)
 textcon=tk.Text(chat_win,width=50,height=8)
+textcon.config(fg="black")
 textcon.pack(fill="both",expand=True)
 mes_win=Entry(root,width=30,xscrollcommand=True,textvariable=message)
 mes_win.place(x=6,y=310,height=60,width=366)
