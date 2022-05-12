@@ -4,3 +4,9 @@ dfs-p.py
 kruskal-p.py
 nqueen-p.py
 tictactoe-p.py
+bfs.py
+dfs.py
+chatbot.py
+kruskal.py
+tictactoe.py
+chatbot.txt

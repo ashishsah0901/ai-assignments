@@ -8,7 +8,7 @@ Hcnp <-- 0, Count <-- 0
 loop do
   if EMPTY?(frontier) then return failure
   node <-- pop(frontier)
-  explored_path_pair <-- path.cost
+  explored_path_pair <-- path cost
   if TERMINAL-TEST(node.STATE) then
     Hcnp <-- Minimum(explored_path_pair)
     frontier <-- load at minimum path cost
