@@ -1,0 +1,26 @@
+function TICTACTOE-SEARCH(game) returns a win or draw
+node <-- a node with STATE = game.INITIAL-STATE, a <-- infinity, b <-- infinity
+frontier <-- a, b pruning queue with node as the only element
+explored <-- an empty set
+
+loop do
+  if EMPTY?(frontier) then return failure
+  node <-- POP(frontier)
+  a <-- MAX-VALUE(state)
+  b <-- MIN-VALUE(state)
+  f(s) <-- Result(s, a) + minimum(a, b)
+  add node.STATE to explored
+  if problem.TERMINAL-TEST(node.STATE) then return WIN(node)
+  return UTILITY(state)
+
+function MAX-VALUE(state) returns a utility value
+v <-- -infinity
+for each a in ACTION(state) do
+v <-- MAX(v, MIN-VALUE(RESULT(s, a)))
+return v
+
+function MIN-VALUE(state) returns a utility value
+k <-- infinity
+for each a in ACTION(state) do
+k <-- MIN(v, MAX-VALUE(RESULT(s, a)))
+return k

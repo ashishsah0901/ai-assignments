@@ -1,0 +1,18 @@
+function DEPTH-FIRST-SEARCH(problem) returns a solution or failure
+node <-- a node with STATE = problem.INITIAL-STATE, PATH-COST=0
+if problem.GOAL-TEST(node.STATE) the return SOLUTION(node)
+
+frontier <-- a LIFO queue with node as the only element
+explored <-- an empty set
+
+loop do
+  if EMPTY?(frontier) then return failure
+  node <-- POP(frontier)
+  add node.STATE to explored
+  PATH-COST <-- path-cost(explored)
+
+  for each child node in problem Queue(node.STATE) do
+  child <-- CHILD-NODE(problem, node, queue)
+  if LIFO.child.STATE is not in explored then
+  if problem.GOAL-TEST(child.STATE) then return SOLUTION(LIFO.child)
+  frontier <-- INSERT(LIFO.child)  

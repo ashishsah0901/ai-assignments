@@ -32,7 +32,7 @@ def evaluate(b):
 			return -10
 	return 0
 
-def minimax(board, depth, isMax):
+def minimax(board, isMax):
 	score = evaluate(board)
 	if (score == 10):
 		return score
@@ -46,7 +46,7 @@ def minimax(board, depth, isMax):
 			for j in range(3):
 				if (board[i][j]=='_'):
 					board[i][j] = player
-					best = max(best, minimax(board, depth + 1, not isMax))
+					best = max(best, minimax(board, not isMax))
 					board[i][j] = '_'
 		return best
 	else:
@@ -55,7 +55,7 @@ def minimax(board, depth, isMax):
 			for j in range(3):
 				if (board[i][j] == '_'):
 					board[i][j] = opponent
-					best = min(best, minimax(board, depth + 1, not isMax))
+					best = min(best, minimax(board, not isMax))
 					board[i][j] = '_'
 		return best
 
@@ -66,7 +66,7 @@ def findBestMove(board):
 		for j in range(3):
 			if (board[i][j] == '_'):
 				board[i][j] = player
-				moveVal = minimax(board, 0, False)
+				moveVal = minimax(board, False)
 				board[i][j] = '_'
 				if (moveVal > bestVal):			
 					bestMove = (i, j)
